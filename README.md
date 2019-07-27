@@ -1,5 +1,6 @@
 # mnist_dnn
 This code is a deep neural network with my own mnist dataset
+
 본인의 이미지 데이터를 직접 불러오고, 이를 기존의 fully conneted network로 classification을 하는 코드 
 
 보통 이론적인 내용을 배운후에, mnist dataset 예제를 단 2줄의 코드로 다운받아 학습이 되는 과정을 실습한다.
