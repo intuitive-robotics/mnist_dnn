@@ -16,6 +16,12 @@ This repo provides a deep neural network with my own mnist dataset
 
 Upload: mnist_png, dnn_mnist.py, util.py 
 
+2019/8/17
+
+Updata: util.py
+
+change function and variable names
+
 
 ## Learning and Evaluation
 <pre><code>python3 dnn_mnist.py or python dnn_mnist.py</code></pre>
