@@ -19,13 +19,13 @@ shuffle_buffer_size_test = 20000
 
 # 2-1. Import training dataset
 DATA_PATH_LIST = glob('./mnist_png/training/*/*.png')
-LABELS = get_label_from_path(DATA_PATH_LIST)
-dataset = data_slice_and_batch(DATA_PATH_LIST, LABELS, shuffle_buffer_size, batch_size)
+LABEL_LIST = get_label_from_path(DATA_PATH_LIST)
+dataset = data_slice_and_batch(DATA_PATH_LIST, LABEL_LIST, shuffle_buffer_size, batch_size)
 
 # 2-2. Import test dataset
 TEST_DATA_PATH_LIST = glob('./mnist_png/testing/*/*.png')
-TEST_LABELS = get_label_from_path(TEST_DATA_PATH_LIST)
-dataset_test = data_slice_and_batch(TEST_DATA_PATH_LIST, TEST_LABELS, shuffle_buffer_size_test, batch_size)
+TEST_LABEL_LIST = get_label_from_path(TEST_DATA_PATH_LIST)
+dataset_test = data_slice_and_batch(TEST_DATA_PATH_LIST, TEST_LABEL_LIST, shuffle_buffer_size_test, batch_size)
 
 
 # 3.Model Design
