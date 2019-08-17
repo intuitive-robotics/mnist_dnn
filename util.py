@@ -4,11 +4,11 @@ from PIL import Image
 
 
 def get_label_from_path(DATA_PATH_LIST):
-	label_list = []
+	LABEL_LIST = []
 	for path in DATA_PATH_LIST:
 		label = path.split('/')[-2]
-		label_list.append(label)
-	return label_list
+		LABEL_LIST.append(label)
+	return LABEL_LIST
 
 def Data_Path2Data(DATA_PATH_LIST, LABEL_LIST):
 
@@ -18,10 +18,10 @@ def Data_Path2Data(DATA_PATH_LIST, LABEL_LIST):
 	LABEL_LIST = np.array(LABEL_LIST, dtype=np.uint8)
 	return image.astype(np.int32), LABEL_LIST
 
-def data_slice_and_batch(path_list, labels, bufferSize, batch_size):
-	dataset = tf.data.Dataset.from_tensor_slices((path_list, labels))
-	dataset = dataset.map(lambda path_list, labels:
-		tuple(tf.py_func(_read_py_function, [path_list, labels],
+def data_slice_and_batch(DATA_PATH_LIST, LABEL_LIST, bufferSize, batch_size):
+	dataset = tf.data.Dataset.from_tensor_slices((DATA_PATH_LIST, LABEL_LIST))
+	dataset = dataset.map(lambda DATA_PATH_LIST, LABEL_LIST:
+		tuple(tf.py_func(Data_Path2Data, [DATA_PATH_LIST, LABEL_LIST],
 			[tf.int32, tf.uint8])))
 
 	dataset = dataset.shuffle(buffer_size=(bufferSize))
