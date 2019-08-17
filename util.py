@@ -10,7 +10,7 @@ def get_label_from_path(DATA_PATH_LIST):
 		label_list.append(label)
 	return label_list
 
-def _read_py_function(DATA_PATH_LIST, LABEL_LIST):
+def Data_Path2Data(DATA_PATH_LIST, LABEL_LIST):
 
 	image = np.array(Image.open(DATA_PATH_LIST))
 	image.reshape(image.shape[0], image.shape[1], 1)
