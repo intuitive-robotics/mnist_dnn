@@ -18,13 +18,13 @@ def Data_Path2Data(DATA_PATH_LIST, LABEL_LIST):
 	LABEL_LIST = np.array(LABEL_LIST, dtype=np.uint8)
 	return image.astype(np.int32), LABEL_LIST
 
-def data_slice_and_batch(DATA_PATH_LIST, LABEL_LIST, bufferSize, batch_size):
+def data_slice_and_batch(DATA_PATH_LIST, LABEL_LIST, shuffle_buffer_size, batch_size):
 	dataset = tf.data.Dataset.from_tensor_slices((DATA_PATH_LIST, LABEL_LIST))
 	dataset = dataset.map(lambda DATA_PATH_LIST, LABEL_LIST:
 		tuple(tf.py_func(Data_Path2Data, [DATA_PATH_LIST, LABEL_LIST],
 			[tf.int32, tf.uint8])))
 
-	dataset = dataset.shuffle(buffer_size=(bufferSize))
+	dataset = dataset.shuffle(buffer_size=(shuffle_buffer_size))
 	dataset = dataset.repeat()
 	dataset = dataset.batch(batch_size)
 
